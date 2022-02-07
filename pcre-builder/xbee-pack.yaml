@@ -1,0 +1,22 @@
+schema-version: 1.0
+
+type: builder
+
+
+const:
+  srcDir: /usr/src
+
+
+out:
+  pcre: /opt/pcre
+
+provision:
+  - shell: "{{ .templates }}/download.sh"
+
+build:
+  - shell:
+      cmds:
+        - ./configure --prefix=/usr
+        - make
+        - make install DESTDIR={% pcre %}
+      directory: "{% srcDir %}/pcre-{% version %}"
