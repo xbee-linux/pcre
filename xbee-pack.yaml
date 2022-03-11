@@ -1,14 +1,34 @@
 schema-version: 1.0
 
-description: |
+type: builder
 
-builder: ./pcre-builder
+description: |
+  The PCRE package contains Perl Compatible Regular Expression libraries. These are useful for implementing regular expression pattern matching using the same syntax and semantics as Perl 5.
+
+  Installed Programs: pcregrep, pcretest, and pcre-config
+  Installed Libraries: libpcre.so, libpcre16.so, libpcre32.so, libpcrecpp.so and libpcreposix.so
+  Installed Directory: /usr/share/doc/pcre-8.45
+  Short Descriptions
+    pcregrep: is a grep that understands Perl compatible regular expressions
+    pcretest: can test a Perl compatible regular expression
+    pcre-config: is used during the compile process of programs linking to the PCRE libraries
 
 in:
-  version: "8.41"
+  version: "8.45"
 
+dependencies:
+  - zlib
 
 provision:
-  - copy:
-      builder: pcre
-      todir: /
+  - url:
+      from: https://sourceforge.net/projects/pcre/files/pcre/{% version %}/pcre-{% version %}.tar.bz2
+      todir: "{% xbeeSrc %}"
+      wget: true
+
+build:
+  - shell:
+      cmds:
+        - ./configure --prefix=/usr
+        - make
+        - make install DESTDIR={% pcre %}
+      directory: "{% srcDir %}/pcre-{% version %}"
