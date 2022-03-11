@@ -30,5 +30,5 @@ build:
       cmds:
         - ./configure --prefix=/usr
         - make
-        - make install DESTDIR={% pcre %}
-      directory: "{% srcDir %}/pcre-{% version %}"
+        - make install DESTDIR={% xbeeOut %}
+      directory: "{% xbeeSrc %}/pcre-{% version %}"
