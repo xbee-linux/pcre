@@ -22,7 +22,7 @@ dependencies:
 provision:
   - url:
       from: https://sourceforge.net/projects/pcre/files/pcre/{{ .version }}/pcre-{{ .version }}.tar.bz2
-      todir: "{{ .xbeeSrc }}"
+      todir: "{{ .xbee.src }}"
       wget: true
 
 build:
@@ -30,5 +30,5 @@ build:
       cmds:
         - ./configure --prefix=/usr
         - make
-        - make install DESTDIR={{ .xbeeOut }}
-      directory: "{{ .xbeeSrc }}/pcre-{{ .version }}"
+        - make install DESTDIR={{ .xbee.out }}
+      directory: "{{ .xbee.src }}/pcre-{{ .version }}"
