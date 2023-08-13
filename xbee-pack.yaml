@@ -16,7 +16,7 @@ description: |
 var:
   version: "8.45"
 
-dependencies:
+builders:
   - zlib
 
 provision:
