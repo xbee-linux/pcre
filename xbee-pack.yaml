@@ -22,7 +22,6 @@ builders:
 provision:
   - url:
       from: https://sourceforge.net/projects/pcre/files/pcre/{{ .version }}/pcre-{{ .version }}.tar.bz2
-      todir: "{{ .xbee.src }}"
       wget: true
 
 build:
