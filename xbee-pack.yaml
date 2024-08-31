@@ -14,14 +14,15 @@ description: |
     pcre-config: is used during the compile process of programs linking to the PCRE libraries
 
 var:
-  version: "8.45"
+  xbee:
+    version: "8.45"
 
 builders:
   - zlib
 
 provision:
   - url:
-      from: https://sourceforge.net/projects/pcre/files/pcre/{{ .version }}/pcre-{{ .version }}.tar.bz2
+      from: https://sourceforge.net/projects/pcre/files/pcre/{{ .xbee.version }}/pcre-{{ .xbee.version }}.tar.bz2
       wget: true
 
 build:
@@ -30,4 +31,4 @@ build:
         - ./configure --prefix=/usr
         - make
         - make install DESTDIR={{ .xbee.out }}
-      directory: "{{ .xbee.src }}/pcre-{{ .version }}"
+      directory: "{{ .xbee.src }}/pcre-{{ .xbee.version }}"
