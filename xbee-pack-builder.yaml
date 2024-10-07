@@ -1,7 +1,5 @@
 schema-version: 1.0
 
-type: builder
-
 description: |
   The PCRE package contains Perl Compatible Regular Expression libraries. These are useful for implementing regular expression pattern matching using the same syntax and semantics as Perl 5.
 
@@ -17,7 +15,7 @@ var:
   xbee:
     version: "8.45"
 
-builders:
+builder:
   - zlib
 
 provision:
